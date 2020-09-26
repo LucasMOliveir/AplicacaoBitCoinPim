@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplicacaoBitCoin", "WindowsFormsApp1\AplicacaoBitCoin.csproj", "{811FAD93-C874-465C-B13F-FE04F1D1375B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcessoAoBancoDeDados", "AcessoAoBancoDeDados\AcessoAoBancoDeDados.csproj", "{8CF11EDE-0425-45C1-94B3-268771D84BE5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{811FAD93-C874-465C-B13F-FE04F1D1375B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{811FAD93-C874-465C-B13F-FE04F1D1375B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{811FAD93-C874-465C-B13F-FE04F1D1375B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{811FAD93-C874-465C-B13F-FE04F1D1375B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CF11EDE-0425-45C1-94B3-268771D84BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CF11EDE-0425-45C1-94B3-268771D84BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CF11EDE-0425-45C1-94B3-268771D84BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CF11EDE-0425-45C1-94B3-268771D84BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C095576F-20DE-42B1-8564-E3AD8AA5CA1E}
+	EndGlobalSection
+EndGlobal
