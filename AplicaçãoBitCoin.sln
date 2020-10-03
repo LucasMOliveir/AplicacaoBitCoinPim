@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplicacaoBitCoin", "Windows
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcessoAoBancoDeDados", "AcessoAoBancoDeDados\AcessoAoBancoDeDados.csproj", "{8CF11EDE-0425-45C1-94B3-268771D84BE5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjetoDeTransferencia", "ObjetoDeTransferencia\ObjetoDeTransferencia.csproj", "{D9994A99-D7CE-4934-AFEB-868655803A11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8CF11EDE-0425-45C1-94B3-268771D84BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CF11EDE-0425-45C1-94B3-268771D84BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CF11EDE-0425-45C1-94B3-268771D84BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9994A99-D7CE-4934-AFEB-868655803A11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9994A99-D7CE-4934-AFEB-868655803A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9994A99-D7CE-4934-AFEB-868655803A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9994A99-D7CE-4934-AFEB-868655803A11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
