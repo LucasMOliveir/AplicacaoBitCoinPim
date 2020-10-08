@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -38,9 +39,13 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.ErrorImage = null;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(254, 50);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(246, 201);
+            this.pictureBox1.Size = new System.Drawing.Size(199, 192);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -48,14 +53,14 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(254, 257);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(246, 20);
+            this.textBox1.Size = new System.Drawing.Size(199, 20);
             this.textBox1.TabIndex = 0;
             // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(254, 283);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(246, 20);
+            this.textBox2.Size = new System.Drawing.Size(199, 20);
             this.textBox2.TabIndex = 1;
             // 
             // bt_entrar
@@ -64,7 +69,7 @@
             this.bt_entrar.FlatAppearance.BorderSize = 0;
             this.bt_entrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bt_entrar.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_entrar.Location = new System.Drawing.Point(297, 340);
+            this.bt_entrar.Location = new System.Drawing.Point(274, 343);
             this.bt_entrar.Name = "bt_entrar";
             this.bt_entrar.Size = new System.Drawing.Size(156, 34);
             this.bt_entrar.TabIndex = 3;
