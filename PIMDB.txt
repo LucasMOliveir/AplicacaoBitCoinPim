@@ -1,0 +1,179 @@
+--Criando a base para o PIM
+CREATE DATABASE PimDB;
+
+--Para usar a base
+USE PimDB;
+
+--Criando o Schema para os Usuários
+CREATE SCHEMA Usuarios;
+
+--Criando a tabela funcionários
+CREATE TABLE Usuarios.Funcionarios (
+FuncionarioId INT PRIMARY KEY NOT NULL,
+Nome VARCHAR (30) NOT NULL,
+CPF INT UNIQUE NOT NULL,
+Cargo VARCHAR (30) NOT NULL,
+Email VARCHAR (100) NOT NULL,
+DataNasc Date NOT NULL,
+Setor VARCHAR (30) NOT NULL,
+--nivel de acesso (ainda vou definir isso)
+Senha VARCHAR (10) UNIQUE NOT NULL
+--Endereço (ainda vou definir)
+--Telefone ainda será definido
+);
+
+--tabela de logins Cliente para o Web/mobile
+CREATE TABLE Usuarios.Cliente (
+ClienteId INT PRIMARY KEY NOT NULL,
+Nome VARCHAR (30) NOT NULL,
+CPF INT UNIQUE NOT NULL,
+Email VARCHAR (100) NOT NULL,
+DataNasc Date NOT NULL,
+--Status (vou definir)
+--nivel de acesso (ainda vou definir isso)
+Senha VARCHAR (10) UNIQUE NOT NULL
+--Endereço (ainda vou definir)
+--Telefone ainda será definido
+--Ids de ligação ainda serão definidos
+);
+
+
+--Criando o Schema para os Logins
+CREATE SCHEMA Logins;
+
+--tabela de logins Cliente para o Web/mobile
+CREATE TABLE Logins.Acesso(
+ AcessoId INT PRIMARY KEY NOT NULL,
+ Senha VARCHAR (10) NOT NULL,
+ CONSTRAINT fk_USULOG FOREIGN KEY (AcessoId) REFERENCES Usuarios.Cliente (ClienteId),
+ CONSTRAINT fk_USUSENHA FOREIGN KEY (Senha) REFERENCES Usuarios.Cliente (Senha)
+ ON DELETE CASCADE
+ ON UPDATE CASCADE
+)
+
+--tabela de logins Funcionário para o Desktop
+CREATE TABLE Logins.AcessoFunc(
+ AcessoFuncId INT PRIMARY KEY NOT NULL,
+ Senha VARCHAR (10) NOT NULL,
+ CONSTRAINT fk_FUNCLOG FOREIGN KEY (AcessoFuncId) REFERENCES Usuarios.Funcionarios (FuncionarioId),
+ CONSTRAINT fk_FUNCSENHA FOREIGN KEY (Senha) REFERENCES Usuarios.Funcionarios (Senha)
+ ON DELETE CASCADE
+ ON UPDATE CASCADE
+)
+
+
+
+
+
+
+
+
+Procedures
+
+
+
+--cria a procedure e o usp antes do nome é = user stored procedure 
+--Consulta cadastro do CLIENTE 
+
+CREATE PROCEDURE uspConsultarLoginUser
+
+--Todos os parametros começam com o @ e tem que ter o mesmo tipo do valor a ser comprado
+@ClienteId INT
+
+AS
+BEGIN
+
+	SELECT * 
+
+	FROM Usuarios.Cliente 
+	
+--Comprar o clienteid com o parametro @		
+	WHERE ClienteId = @ClienteId
+	
+
+END
+
+--EXEC de teste
+--EXEC uspConsultarLoginUser 1
+
+-------------------------------------------------------------------------------------------------------------
+
+--cria a procedure e o usp antes do nome é = user stored procedure 
+--Consulta cadastro do Funcionario
+
+CREATE PROCEDURE uspConsultarLoginFunc
+
+--Todos os parametros começam com o @ e tem que ter o mesmo tipo do valor a ser comprado
+@FuncionarioId INT
+
+AS
+BEGIN
+
+	SELECT * 
+
+	FROM Usuarios.Funcionarios
+	
+--Comprar o clienteid com o parametro @		
+	WHERE FuncionarioId = @FuncionarioId
+	
+
+END
+
+--EXEC de teste
+--EXEC uspConsultarLoginFunc 1
+
+-------------------------------------------------------------------------------------------------------------
+
+--cria a procedure e o usp antes do nome é = user stored procedure 
+--Consulta Acesso Funcionario
+
+CREATE PROCEDURE uspConsultarAcessoFunc
+
+--Todos os parametros começam com o @ e tem que ter o mesmo tipo do valor a ser comprado
+@AcessoFuncId INT,
+@Senha VARCHAR (10)
+
+AS
+BEGIN
+ 
+	SELECT * 
+
+	FROM Logins.AcessoFunc
+	
+--Comprar o clienteid com o parametro @		
+	WHERE AcessoFuncId = @AcessoFuncId and Senha = @Senha
+
+
+
+END
+
+--EXEC de teste exemplo
+--EXEC uspConsultarAcessoFunc '1', 'xx';
+
+-------------------------------------------------------------------------------------------------------------
+
+--cria a procedure e o usp antes do nome é = user stored procedure 
+--Consulta Acesso Funcionario
+
+CREATE PROCEDURE uspConsultarAcessoUser
+
+--Todos os parametros começam com o @ e tem que ter o mesmo tipo do valor a ser comprado
+@AcessoId INT,
+@Senha VARCHAR (10)
+
+AS
+BEGIN
+ 
+	SELECT * 
+
+	FROM Logins.Acesso
+	
+--Comprar o clienteid com o parametro @		
+	WHERE AcessoId = @AcessoId and Senha = @Senha
+
+
+
+END
+
+--EXEC de teste exemplo
+--EXEC uspConsultarAcessoUser '1', 'xx';
