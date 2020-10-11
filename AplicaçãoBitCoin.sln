@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcessoAoBancoDeDados", "Ace
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjetoDeTransferencia", "ObjetoDeTransferencia\ObjetoDeTransferencia.csproj", "{D9994A99-D7CE-4934-AFEB-868655803A11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocios", "Negocios\Negocios.csproj", "{140B388E-E85D-4A59-931C-823C7701C884}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D9994A99-D7CE-4934-AFEB-868655803A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9994A99-D7CE-4934-AFEB-868655803A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9994A99-D7CE-4934-AFEB-868655803A11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{140B388E-E85D-4A59-931C-823C7701C884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{140B388E-E85D-4A59-931C-823C7701C884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{140B388E-E85D-4A59-931C-823C7701C884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{140B388E-E85D-4A59-931C-823C7701C884}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

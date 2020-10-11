@@ -3,9 +3,9 @@
     public class LoginsDeAcessoFuncionario
     {
 
-        int AcessoFuncId { get; set; }
+        public int AcessoFuncId { get; set; }
 
-        string Senha { get; set; }
+        public string Senha { get; set; }
 
 
     }

@@ -5,17 +5,17 @@ namespace ObjetoDeTransferencia
     public class UsuarioFuncionario
     {
 
-        int FuncionarioId { get; set; }
+        public int FuncionarioId { get; set; }
 
-        string Nome { get; set; }
+        public string Nome { get; set; }
 
-        int CPF { get; set; }
+        public int CPF { get; set; }
 
-        string Email { get; set; }
+        public string Email { get; set; }
 
-        DateTime DataDeNacimento { get; set; }
+        public DateTime DataDeNacimento { get; set; }
 
-        string senha { get; set; }
+        public string Senha { get; set; }
 
     }
 }

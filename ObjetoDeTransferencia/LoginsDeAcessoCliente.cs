@@ -3,9 +3,9 @@
     public class LoginsDeAcessoCliente
     {
 
-        int AcessoId { get; set; }
+        public int AcessoId { get; set; }
 
-        string Senha { get; set; }
+        public string Senha { get; set; }
 
     }
 }

@@ -4,17 +4,17 @@ namespace ObjetoDeTransferencia
 {
     public class UsuarioCliente
     {
-        int ClienteId { get; set; }
+        public int ClienteId { get; set; }
 
-        string Nome { get; set; }
+        public string Nome { get; set; }
 
-        int CPF { get; set; }
+        public int CPF { get; set; }
 
-        string Email { get; set; }
+        public string Email { get; set; }
 
-        DateTime DataDeNascimento { get; set; }
+        public DateTime DataDeNascimento { get; set; }
 
-        string Senha { get; set; }
+        public string Senha { get; set; }
 
     }
 }
