@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ObjetoDeTransferencia;
+using Negocios;
+
 
 namespace WindowsFormsApp1
 {
@@ -20,6 +23,30 @@ namespace WindowsFormsApp1
         private void lk_EsqueciMinhaSenha_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
+        }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            UsuarioFuncionario usuarioFuncionario = new UsuarioFuncionario();
+
+            usuarioFuncionario.FuncionarioId = int.Parse(txtUsuario.Text);
+            usuarioFuncionario.Senha = txtSenha.Text;
+
+            LogInNegocio logInNegocio = new LogInNegocio();
+
+            if(logInNegocio.ValidarLogIn(usuarioFuncionario) == "1")
+            {
+                this.Hide();
+                MenuFrm menu = new MenuFrm();
+                menu.Show();
+            }
+            else
+            {
+                MessageBox.Show("Usuario ou senha invalido", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSenha.Text = "";
+                txtUsuario.Text = "";
+                return;
+            }
         }
     }
 }

@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaLoginFrm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.bt_entrar = new System.Windows.Forms.Button();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.btnEntrar = new System.Windows.Forms.Button();
             this.lk_EsqueciMinhaSenha = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -49,32 +49,33 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox1
+            // txtUsuario
             // 
-            this.textBox1.Location = new System.Drawing.Point(254, 257);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtUsuario.Location = new System.Drawing.Point(254, 257);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(199, 20);
+            this.txtUsuario.TabIndex = 0;
             // 
-            // textBox2
+            // txtSenha
             // 
-            this.textBox2.Location = new System.Drawing.Point(254, 283);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(199, 20);
-            this.textBox2.TabIndex = 1;
+            this.txtSenha.Location = new System.Drawing.Point(254, 283);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.Size = new System.Drawing.Size(199, 20);
+            this.txtSenha.TabIndex = 1;
             // 
-            // bt_entrar
+            // btnEntrar
             // 
-            this.bt_entrar.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.bt_entrar.FlatAppearance.BorderSize = 0;
-            this.bt_entrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bt_entrar.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_entrar.Location = new System.Drawing.Point(274, 343);
-            this.bt_entrar.Name = "bt_entrar";
-            this.bt_entrar.Size = new System.Drawing.Size(156, 34);
-            this.bt_entrar.TabIndex = 3;
-            this.bt_entrar.Text = "Entrar";
-            this.bt_entrar.UseVisualStyleBackColor = false;
+            this.btnEntrar.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnEntrar.FlatAppearance.BorderSize = 0;
+            this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEntrar.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEntrar.Location = new System.Drawing.Point(274, 343);
+            this.btnEntrar.Name = "btnEntrar";
+            this.btnEntrar.Size = new System.Drawing.Size(156, 34);
+            this.btnEntrar.TabIndex = 3;
+            this.btnEntrar.Text = "Entrar";
+            this.btnEntrar.UseVisualStyleBackColor = false;
+            this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
             // 
             // lk_EsqueciMinhaSenha
             // 
@@ -96,9 +97,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lk_EsqueciMinhaSenha);
-            this.Controls.Add(this.bt_entrar);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnEntrar);
+            this.Controls.Add(this.txtSenha);
+            this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.pictureBox1);
             this.Name = "TelaLoginFrm";
             this.Text = "Tela de Login";
@@ -111,9 +112,9 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button bt_entrar;
+        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.TextBox txtSenha;
+        private System.Windows.Forms.Button btnEntrar;
         private System.Windows.Forms.LinkLabel lk_EsqueciMinhaSenha;
     }
 }

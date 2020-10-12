@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Menu : Form
+    public partial class MenuFrm : Form
     {
         private int childFormNumber = 0;
 
-        public Menu()
+        public MenuFrm()
         {
             InitializeComponent();
         }
@@ -102,6 +102,11 @@ namespace WindowsFormsApp1
             {
                 childForm.Close();
             }
+        }
+
+        private void MenuFrm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
