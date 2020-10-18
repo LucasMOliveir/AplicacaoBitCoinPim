@@ -4,9 +4,11 @@ CREATE DATABASE PimDB;
 --Para usar a base
 USE PimDB;
 
+--------------------------------------------------------------------------------------------------------------------
 --Criando o Schema para os Usuários
 CREATE SCHEMA Usuarios;
 
+-----------------------------------------
 --Criando a tabela funcionários
 CREATE TABLE Usuarios.Funcionarios (
 FuncionarioId INT PRIMARY KEY NOT NULL,
@@ -16,12 +18,30 @@ Cargo VARCHAR (30) NOT NULL,
 Email VARCHAR (100) NOT NULL,
 DataNasc Date NOT NULL,
 Setor VARCHAR (30) NOT NULL,
---nivel de acesso (ainda vou definir isso)
 Senha VARCHAR (10) UNIQUE NOT NULL
---Endereço (ainda vou definir)
---Telefone ainda será definido
+--nivel de acesso (ainda vou definir isso)
+--Endereço foi adicionado no alter logo abaixo
+--Telefone foi adicionado no alter logo abaixo
 );
 
+--Alterando o tipo do CPF
+ALTER TABLE Usuarios.Funcionarios 
+ALTER COLUMN CPF VARCHAR (11)
+
+--Colocando como Unique novamente
+ALTER TABLE Usuarios.Funcionarios ADD CONSTRAINT UK_FUNC_CPF UNIQUE (CPF)
+
+-- Adicionando Telefones
+
+ALTER TABLE Usuarios.Funcionarios ADD Celular VARCHAR (11) NOT NULL 
+ALTER TABLE Usuarios.Funcionarios ADD TelefoneFixo VARCHAR (10)
+
+--ADICIONANDO O ENDEREÇO
+
+ALTER TABLE Usuarios.Funcionarios ADD EnderecoId INT NOT NULL
+ALTER TABLE Usuarios.Funcionarios ADD CONSTRAINT fk_EnderecoIdFunc FOREIGN KEY (EnderecoId) REFERENCES Enderecos.Endereco (EnderecoId)
+
+-----------------------------------------------------------
 --tabela de logins Cliente para o Web/mobile
 CREATE TABLE Usuarios.Cliente (
 ClienteId INT PRIMARY KEY NOT NULL,
@@ -29,17 +49,38 @@ Nome VARCHAR (30) NOT NULL,
 CPF INT UNIQUE NOT NULL,
 Email VARCHAR (100) NOT NULL,
 DataNasc Date NOT NULL,
---Status (vou definir)
---nivel de acesso (ainda vou definir isso)
 Senha VARCHAR (10) UNIQUE NOT NULL
---Endereço (ainda vou definir)
---Telefone ainda será definido
---Ids de ligação ainda serão definidos
+--Status foi adicionado no alter logo abaixo
+--Endereço foi adicionado no alter logo abaixo 
+--Telefone foi adicionado no alter logo abaixo
+--Ids de ligação ainda serão definidos dos contratos e transações
 );
 
+--Alterando o tipo do CPF Cliente
+ALTER TABLE Usuarios.Cliente
+ALTER COLUMN CPF VARCHAR (11)
+
+--Colocando como Unique novamente
+ALTER TABLE Usuarios.Cliente ADD CONSTRAINT UK_CLIENTE_CPF UNIQUE (CPF)
+
+-- Adicionando a coluna status
+ALTER TABLE Usuarios.Cliente ADD StatusCadastro VARCHAR (9) NOT NULL
+
+-- Adicionando Telefones
+
+ALTER TABLE Usuarios.Cliente ADD Celular VARCHAR (11) NOT NULL 
+ALTER TABLE Usuarios.Cliente ADD TelefoneFixo VARCHAR (10)
+
+--Adicionando Endereço
+ALTER TABLE Usuarios.Cliente ADD EnderecoId INT NOT NULL
+ALTER TABLE Usuarios.Cliente ADD CONSTRAINT fk_EnderecoId FOREIGN KEY (EnderecoId) REFERENCES Enderecos.Endereco (EnderecoId)
+
+-------------------------------------------------------------------------------------------------------------------
 
 --Criando o Schema para os Logins
 CREATE SCHEMA Logins;
+
+-----------------------------------------------
 
 --tabela de logins Cliente para o Web/mobile
 CREATE TABLE Logins.Acesso(
@@ -51,6 +92,8 @@ CREATE TABLE Logins.Acesso(
  ON UPDATE CASCADE
 )
 
+
+-------------------------------------------------
 --tabela de logins Funcionário para o Desktop
 CREATE TABLE Logins.AcessoFunc(
  AcessoFuncId INT PRIMARY KEY NOT NULL,
@@ -65,6 +108,7 @@ CREATE TABLE Logins.AcessoFunc(
 
 
 
+------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -97,7 +141,6 @@ END
 --EXEC uspConsultarLoginUser 1
 
 -------------------------------------------------------------------------------------------------------------
-
 --cria a procedure e o usp antes do nome é = user stored procedure 
 --Consulta cadastro do Funcionario
 
@@ -149,11 +192,31 @@ END
 
 --EXEC de teste exemplo
 --EXEC uspConsultarAcessoFunc '1', 'xx';
+ 
+
+--Também é possível alterar clicando com o botão direito na procedure (está em programmability) e em modify 
+--Alteração da Procedure
+ALTER PROCEDURE [dbo].[uspConsultarAcessoFunc]
+
+--Todos os parametros começam com o @ e tem que ter o mesmo tipo do valor a ser comprado
+@AcessoFuncId INT,
+@Senha VARCHAR (10)
+
+AS
+BEGIN
+    DECLARE @Status INT
+	IF exists (SELECT * FROM Logins.AcessoFunc WHERE Logins.AcessoFunc.AcessoFuncId = @AcessoFuncId and Senha = @Senha)
+	SET @Status = 1
+	ELSE 
+	SET @Status = 0 
+	SELECT @Status
+	
+END
 
 -------------------------------------------------------------------------------------------------------------
 
 --cria a procedure e o usp antes do nome é = user stored procedure 
---Consulta Acesso Funcionario
+--Consulta Acesso User
 
 CREATE PROCEDURE uspConsultarAcessoUser
 
@@ -177,3 +240,25 @@ END
 
 --EXEC de teste exemplo
 --EXEC uspConsultarAcessoUser '1', 'xx';
+
+
+
+--Também é possível alterar clicando com o botão direito na procedure (está em programmability) e em modify 
+--Alteração da procedure
+ALTER PROCEDURE [dbo].[uspConsultarAcessoUser]
+
+--Todos os parametros começam com o @ e tem que ter o mesmo tipo do valor a ser comprado
+@AcessoId INT,
+@Senha VARCHAR (10)
+
+AS
+BEGIN
+	DECLARE @Status INT
+	IF exists (SELECT * FROM Logins.Acesso WHERE Logins.Acesso.AcessoId = @AcessoId and Senha = @Senha)
+	SET @Status = 1
+	ELSE 
+	SET @Status = 0 
+	SELECT @Status
+
+
+END
