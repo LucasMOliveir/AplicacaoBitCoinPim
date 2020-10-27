@@ -46,11 +46,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MenuFrm.cs">
+    <Compile Include="CadastroDeFuncionarioAlterarFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuFrm.Designer.cs">
-      <DependentUpon>MenuFrm.cs</DependentUpon>
+    <Compile Include="CadastroDeFuncionarioAlterarFrm.Designer.cs">
+      <DependentUpon>CadastroDeFuncionarioAlterarFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroDeFuncionarioInserirFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroDeFuncionarioInserirFrm.Designer.cs">
+      <DependentUpon>CadastroDeFuncionarioInserirFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroDeFuncionariosFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroDeFuncionariosFrm.Designer.cs">
+      <DependentUpon>CadastroDeFuncionariosFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroDeUsuarioAlterar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroDeUsuarioAlterar.Designer.cs">
+      <DependentUpon>CadastroDeUsuarioAlterar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroDeUsuarioInserirFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroDeUsuarioInserirFrm.Designer.cs">
+      <DependentUpon>CadastroDeUsuarioInserirFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroDeUsuariosFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroDeUsuariosFrm.Designer.cs">
+      <DependentUpon>CadastroDeUsuariosFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="TelaLoginFrm.cs">
       <SubType>Form</SubType>
@@ -60,8 +96,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MenuFrm.resx">
-      <DependentUpon>MenuFrm.cs</DependentUpon>
+    <EmbeddedResource Include="CadastroDeFuncionarioAlterarFrm.resx">
+      <DependentUpon>CadastroDeFuncionarioAlterarFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroDeFuncionarioInserirFrm.resx">
+      <DependentUpon>CadastroDeFuncionarioInserirFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroDeFuncionariosFrm.resx">
+      <DependentUpon>CadastroDeFuncionariosFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroDeUsuarioAlterar.resx">
+      <DependentUpon>CadastroDeUsuarioAlterar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroDeUsuarioInserirFrm.resx">
+      <DependentUpon>CadastroDeUsuarioInserirFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroDeUsuariosFrm.resx">
+      <DependentUpon>CadastroDeUsuariosFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TelaLoginFrm.resx">
       <DependentUpon>TelaLoginFrm.cs</DependentUpon>
@@ -74,6 +128,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -97,6 +152,10 @@
       <Project>{d9994a99-d7ce-4934-afeb-868655803a11}</Project>
       <Name>ObjetoDeTransferencia</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\User-Clients-icon1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

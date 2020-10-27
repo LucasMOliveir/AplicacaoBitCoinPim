@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ObjetoDeTransferencia
 {
-    class Endereco
+    public class Endereco
     {
+
+        
+
     }
 }

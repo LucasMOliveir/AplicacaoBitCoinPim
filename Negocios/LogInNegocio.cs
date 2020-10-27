@@ -17,9 +17,9 @@ namespace Negocios
         public string ValidarLogIn(UsuarioFuncionario usuarioFuncionario)
         {
             acessoAoBancoDeDadosSqlServer.LimparParamentros();
-            acessoAoBancoDeDadosSqlServer.AdicionarParamentros("@AcessoId", usuarioFuncionario.FuncionarioId);
+            acessoAoBancoDeDadosSqlServer.AdicionarParamentros("@FuncionarioId", usuarioFuncionario.FuncionarioId);
             acessoAoBancoDeDadosSqlServer.AdicionarParamentros("@Senha", usuarioFuncionario.Senha);
-            return acessoAoBancoDeDadosSqlServer.ExecutarManipulacao(CommandType.StoredProcedure, "uspConsultarAcessoUser").ToString();
+            return acessoAoBancoDeDadosSqlServer.ExecutarManipulacao(CommandType.StoredProcedure, "uspConsultarLoginFunc").ToString();
         }
 
     }

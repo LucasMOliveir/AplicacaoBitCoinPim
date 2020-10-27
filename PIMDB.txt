@@ -245,7 +245,7 @@ END
 
 --Também é possível alterar clicando com o botão direito na procedure (está em programmability) e em modify 
 --Alteração da procedure
-ALTER PROCEDURE [dbo].[uspConsultarAcessoUser]
+CREATE PROCEDURE [dbo].[uspConsultarAcessoUser]
 
 --Todos os parametros começam com o @ e tem que ter o mesmo tipo do valor a ser comprado
 @AcessoId INT,

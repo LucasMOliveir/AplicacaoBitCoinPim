@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Endereco.cs" />
+    <Compile Include="Pessoa.cs" />
     <Compile Include="UsuarioClienteColecao.cs" />
     <Compile Include="LoginsDeAcessoCliente.cs" />
     <Compile Include="LoginsDeAcessoFuncionario.cs" />

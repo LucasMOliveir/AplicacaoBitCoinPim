@@ -37,8 +37,8 @@ namespace WindowsFormsApp1
             if(logInNegocio.ValidarLogIn(usuarioFuncionario) == "1")
             {
                 this.Hide();
-                MenuFrm menu = new MenuFrm();
-                menu.Show();
+                MenuPrincipal menuPrincipal = new MenuPrincipal();
+                menuPrincipal.Show();
             }
             else
             {

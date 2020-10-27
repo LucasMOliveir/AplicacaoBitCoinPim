@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace ObjetoDeTransferencia
 {
-    class Pessoa
+    public class Pessoa
     {
+        string nome { get; set; }
+
+        DateTime dataDeNascimento { get; set; }
+
+        string email { get; set; }
+
+        string rg { get; set; }
+
+        string status { get; set; }
     }
 }

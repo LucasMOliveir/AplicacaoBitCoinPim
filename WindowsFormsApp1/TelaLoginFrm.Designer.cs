@@ -55,13 +55,16 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(199, 20);
             this.txtUsuario.TabIndex = 0;
+            this.txtUsuario.Text = "1";
             // 
             // txtSenha
             // 
             this.txtSenha.Location = new System.Drawing.Point(254, 283);
             this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(199, 20);
             this.txtSenha.TabIndex = 1;
+            this.txtSenha.Text = "123b";
             // 
             // btnEntrar
             // 
@@ -93,6 +96,7 @@
             // 
             // TelaLoginFrm
             // 
+            this.AcceptButton = this.btnEntrar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);

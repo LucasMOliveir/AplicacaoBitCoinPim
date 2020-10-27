@@ -2,7 +2,7 @@
 
 namespace ObjetoDeTransferencia
 {
-    public class UsuarioCliente
+    public class UsuarioCliente : Pessoa
     {
         public int ClienteId { get; set; }
 

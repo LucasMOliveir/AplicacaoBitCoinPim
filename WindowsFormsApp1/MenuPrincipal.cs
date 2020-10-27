@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1
+{
+    public partial class MenuPrincipal : Form
+    {
+        public MenuPrincipal()
+        {
+            InitializeComponent();
+        }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void BtnCadastroDeFuncionario_Click(object sender, EventArgs e)
+        {
+            CadastroDeFuncionariosFrm cadastroDeFuncionariosFrm = new CadastroDeFuncionariosFrm();
+            cadastroDeFuncionariosFrm.MdiParent = this;
+            cadastroDeFuncionariosFrm.Show();
+        }
+
+        private void BtnCadastroDeUsuarios_Click(object sender, EventArgs e)
+        {
+            CadastroDeUsuariosFrm cadastroDeUsuariosFrm = new CadastroDeUsuariosFrm();
+            cadastroDeUsuariosFrm.MdiParent = this;
+            cadastroDeUsuariosFrm.Show();
+        }
+    }
+}
