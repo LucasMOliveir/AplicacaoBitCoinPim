@@ -41,8 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contratos.cs" />
     <Compile Include="Endereco.cs" />
+    <Compile Include="EnderecoColecao.cs" />
+    <Compile Include="Pedidos.cs" />
     <Compile Include="Pessoa.cs" />
+    <Compile Include="Requisicoes.cs" />
+    <Compile Include="Telefone.cs" />
     <Compile Include="UsuarioClienteColecao.cs" />
     <Compile Include="LoginsDeAcessoCliente.cs" />
     <Compile Include="LoginsDeAcessoFuncionario.cs" />

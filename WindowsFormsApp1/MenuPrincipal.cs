@@ -40,5 +40,12 @@ namespace WindowsFormsApp1
             cadastroDeUsuariosFrm.MdiParent = this;
             cadastroDeUsuariosFrm.Show();
         }
+
+        private void BtnCadastroEndereço_Click(object sender, EventArgs e)
+        {
+            CadastroDeEndereco cadastroDeEndereco = new CadastroDeEndereco();
+            cadastroDeEndereco.MdiParent = this;
+            cadastroDeEndereco.Show();
+        }
     }
 }

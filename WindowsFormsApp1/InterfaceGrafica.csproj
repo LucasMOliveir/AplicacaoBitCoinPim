@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CadastroDeEndereco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroDeEndereco.Designer.cs">
+      <DependentUpon>CadastroDeEndereco.cs</DependentUpon>
+    </Compile>
     <Compile Include="CadastroDeFuncionarioAlterarFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,18 @@
     <Compile Include="CadastroDeUsuariosFrm.Designer.cs">
       <DependentUpon>CadastroDeUsuariosFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EnderecoAlterarFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnderecoAlterarFrm.Designer.cs">
+      <DependentUpon>EnderecoAlterarFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnderecoInserirFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnderecoInserirFrm.Designer.cs">
+      <DependentUpon>EnderecoInserirFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +114,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CadastroDeEndereco.resx">
+      <DependentUpon>CadastroDeEndereco.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CadastroDeFuncionarioAlterarFrm.resx">
       <DependentUpon>CadastroDeFuncionarioAlterarFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +134,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CadastroDeUsuariosFrm.resx">
       <DependentUpon>CadastroDeUsuariosFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnderecoAlterarFrm.resx">
+      <DependentUpon>EnderecoAlterarFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnderecoInserirFrm.resx">
+      <DependentUpon>EnderecoInserirFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>

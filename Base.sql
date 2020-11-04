@@ -17,10 +17,13 @@ Numero VARCHAR (4) NOT NULL,
 Bairro VARCHAR (50) NOT NULL,
 Cidade VARCHAR (50) NOT NULL,
 Estado VARCHAR (50) NOT NULL,
-Pais VARCHAR (50) NOT NULL
+Pais VARCHAR (50) NOT NULL,
+Complemento VARCHAR(20),
+Cep VARCHAR (10)
 );
 
 GO
+
 -----------------------------------------------------------------------------------------------------
 
 --Criando o Schema para os Usuários
@@ -95,3 +98,83 @@ CREATE TABLE Logins.AcessoFunc(
 )
 
 --------------------------------------------------------------------------------------------------------
+--procedure para inserção de endereço para Desktop
+
+GO
+
+CREATE PROCEDURE uspInserirEndereco
+
+@Logradouro VARCHAR (120),
+@Numero VARCHAR (6),
+@Bairro VARCHAR (50),
+@Cidade VARCHAR (50),
+@Estado VARCHAR (50),
+@Pais VARCHAR (50),
+@Complemento VARCHAR (20),
+@Cep VARCHAR (10)
+
+
+AS BEGIN
+BEGIN TRAN
+INSERT INTO Enderecos.Enderecos VALUES (@Logradouro,@Numero,@Bairro,@Cidade,@Estado,@Pais,@Cep,@Complemento)
+SELECT @@IDENTITY AS 'RetornoUI'
+COMMIT TRAN
+END
+
+--------------------------------------------------------------------------------------------------------
+-- procedure para consulta de endereço por ID para desktop
+
+GO
+CREATE PROCEDURE uspConsultarIdEndereco
+
+@EnderecoId int
+
+AS BEGIN
+SELECT * FROM Enderecos.Enderecos
+WHERE EnderecoId = @EnderecoId
+END
+--------------------------------------------------------------------------------------------------------
+--procedure para consulta de endereço por Cep para desktop
+
+GO
+CREATE PROCEDURE uspConsultaCepEndereco
+
+@Cep VARCHAR (10)
+
+AS BEGIN
+SELECT * FROM Enderecos.Enderecos WHERE Enderecos.Cep LIKE '%' + @Cep + '%'
+END
+--------------------------------------------------------------------------------------------------------
+--procedure para excluir endereco para desktop
+GO
+
+CREATE PROCEDURE uspExcluirEndereco
+@EnderecoId int
+AS BEGIN
+DELETE FROM Enderecos.Enderecos WHERE EnderecoId = @EnderecoId
+Select @@IDENTITY AS 'RetornoEE'
+END
+
+GO
+--------------------------------------------------------------------------------------------------------
+--procedure para alterar endereço para desktop
+CREATE PROCEDURE uspAlterarEndereco
+@EnderecoId int,
+@Logradouro varchar (20),
+@Numero varchar(6),
+@Bairro varchar(50),
+@Cidade varchar(50),
+@Estado varchar(50),
+@Pais varchar(50),
+@Cep varchar(10),
+@Complemento varchar(20)
+AS BEGIN
+BEGIN TRAN
+UPDATE Enderecos.Enderecos SET Logradouro = @Logradouro,  Numero = @Numero, Bairro = @Bairro, Cidade = @Cidade, Estado = @Estado, Pais = @Pais, Cep = @Cep, Complemento = @Complemento
+WHERE EnderecoId = @EnderecoId
+SELECT @@IDENTITY AS 'RetornoAE'
+COMMIT TRAN
+END
+GO
+
+select * from Usuarios.Funcionarios

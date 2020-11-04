@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnCadastroEndereço = new System.Windows.Forms.Button();
             this.BtnInclusaoEAprovacao = new System.Windows.Forms.Button();
             this.BtnGerenciarPedidosERequisicoes = new System.Windows.Forms.Button();
             this.BtnCadastroDeUsuarios = new System.Windows.Forms.Button();
@@ -40,6 +41,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.BtnCadastroEndereço);
             this.panel1.Controls.Add(this.BtnInclusaoEAprovacao);
             this.panel1.Controls.Add(this.BtnGerenciarPedidosERequisicoes);
             this.panel1.Controls.Add(this.BtnCadastroDeUsuarios);
@@ -47,8 +49,20 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1122, 79);
+            this.panel1.Size = new System.Drawing.Size(1550, 79);
             this.panel1.TabIndex = 1;
+            // 
+            // BtnCadastroEndereço
+            // 
+            this.BtnCadastroEndereço.BackColor = System.Drawing.Color.Transparent;
+            this.BtnCadastroEndereço.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCadastroEndereço.Location = new System.Drawing.Point(848, 0);
+            this.BtnCadastroEndereço.Name = "BtnCadastroEndereço";
+            this.BtnCadastroEndereço.Size = new System.Drawing.Size(190, 79);
+            this.BtnCadastroEndereço.TabIndex = 1;
+            this.BtnCadastroEndereço.Text = "Cadastrar Endereço";
+            this.BtnCadastroEndereço.UseVisualStyleBackColor = false;
+            this.BtnCadastroEndereço.Click += new System.EventHandler(this.BtnCadastroEndereço_Click);
             // 
             // BtnInclusaoEAprovacao
             // 
@@ -104,10 +118,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1122, 494);
+            this.ClientSize = new System.Drawing.Size(1550, 891);
             this.Controls.Add(this.panel1);
             this.IsMdiContainer = true;
             this.Name = "MenuPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuPrincipal";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuPrincipal_FormClosed);
             this.Load += new System.EventHandler(this.MenuPrincipal_Load);
@@ -123,5 +138,6 @@
         private System.Windows.Forms.Button BtnCadastroDeUsuarios;
         private System.Windows.Forms.Button BtnCadastroDeFuncionario;
         private System.Windows.Forms.Button BtnInclusaoEAprovacao;
+        private System.Windows.Forms.Button BtnCadastroEndereço;
     }
 }
