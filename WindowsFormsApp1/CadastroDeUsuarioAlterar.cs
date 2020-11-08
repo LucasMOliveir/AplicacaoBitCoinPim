@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ObjetoDeTransferencia;
 
 namespace WindowsFormsApp1
 {
@@ -16,5 +17,13 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        public CadastroDeUsuarioAlterar(UsuarioFuncionario usuarioFuncionario)
+        {
+            InitializeComponent();
+
+
+        }
+
     }
 }

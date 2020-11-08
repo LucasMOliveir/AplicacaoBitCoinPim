@@ -33,7 +33,7 @@ GO
 
 --Criando a tabela funcionários
 CREATE TABLE Usuarios.Funcionarios (
-FuncionarioId INT PRIMARY KEY NOT NULL,
+FuncionarioId INT PRIMARY KEY NOT NULL IDENTITY (1,1),
 Nome VARCHAR (30) NOT NULL,
 CPF VARCHAR (11) UNIQUE NOT NULL,
 Cargo VARCHAR (30) NOT NULL,
@@ -52,7 +52,7 @@ GO
 -----------------------------------------------------------
 --tabela de logins Cliente para o Web/mobile
 CREATE TABLE Usuarios.Cliente (
-ClienteId INT PRIMARY KEY NOT NULL,
+ClienteId INT PRIMARY KEY NOT NULL IDENTITY (1,1),
 Nome VARCHAR (30) NOT NULL,
 CPF VARCHAR (11) UNIQUE NOT NULL,
 Email VARCHAR (100) NOT NULL,
@@ -116,11 +116,33 @@ CREATE PROCEDURE uspInserirEndereco
 
 AS BEGIN
 BEGIN TRAN
-INSERT INTO Enderecos.Enderecos VALUES (@Logradouro,@Numero,@Bairro,@Cidade,@Estado,@Pais,@Cep,@Complemento)
+INSERT INTO Enderecos.Enderecos VALUES (@Logradouro,@Numero,@Bairro,@Cidade,@Estado,@Pais,@Complemento,@Cep)
 SELECT @@IDENTITY AS 'RetornoUI'
 COMMIT TRAN
 END
 
+uspInserirEndereco 'RUA','123','BAIRRO','SÃO PAULO','SP','BRASIL','COMPLEMENTO','CEP'
+
+--------------------------------------------------------------------------------------------------------
+
+CREATE PROCEDURE uspConsultarAcessoUser
+@AcessoId int,
+@Senha varchar (10)
+AS BEGIN
+DECLARE @Status int
+	IF exists (Select * from Usuarios.Funcionarios where Usuarios.Funcionarios.FuncionarioId = @AcessoId and Senha = @Senha)
+	SET @Status = 1
+	ELSE
+	SET @Status = 0
+	SELECT @Status
+END
+
+uspConsultarAcessoUser @AcessoId = 1, @Senha = '123b'
+
+INSERT INTO Usuários.Funcionarios (FuncionárioId, Nome, CPF, Cargo, Email, DataNasc, Setor, Senha)
+VALUES (1,'funcionario teste', 333, 'teste','teste@teste.com','2020-10-11','setorTeste','teste')
+
+SELECT * FROM Usuarios.Funcionarios
 --------------------------------------------------------------------------------------------------------
 -- procedure para consulta de endereço por ID para desktop
 
@@ -177,4 +199,70 @@ COMMIT TRAN
 END
 GO
 
-select * from Usuarios.Funcionarios
+--------------------------------------------------------------------------------------------------------
+
+CREATE PROCEDURE uspInserirFuncionario
+
+@Nome VARCHAR(30),
+@CPF VARCHAR(11),
+@Cargo VARCHAR(30),
+@Email VARCHAR(100),
+@DataNasc DATE,
+@Telefone VARCHAR(10),
+@Celular VARCHAR(11),
+@EnderecoId INT,
+@Setor VARCHAR (30),
+@Senha VARCHAR(10)
+
+AS BEGIN
+INSERT INTO Usuarios.Funcionarios VALUES (@Nome,@CPF,@Cargo,@Email,@DataNasc,@Telefone,@Celular,@EnderecoId,@Setor,@Senha)
+SELECT @@IDENTITY AS 'RetornoFI'
+
+END
+
+--uspInserirFuncionario 'jão','CPFffFF','CARGO','','2011-03-12','TELFIXO','TELCEL',1,'ADIMISTRATIVO','123456'
+go 
+--------------------------------------------------------------------------------------------------------
+CREATE PROCEDURE uspConsultarUsuarioFuncionarioPorNome
+
+@Nome VARCHAR (30)
+
+AS BEGIN
+SELECT * FROM Usuarios.Funcionarios WHERE Nome LIKE '%' + @Nome + '%'
+END
+go
+--------------------------------------------------------------------------------------------------------
+
+CREATE PROCEDURE uspConsultarUsuarioFuncionarioPorId
+
+@FuncionarioId INT
+
+AS BEGIN
+SELECT * FROM Usuarios.Funcionarios WHERE FuncionarioId = @FuncionarioId
+END
+GO
+
+CREATE PROCEDURE uspAlterarUsuarioFuncionario
+
+@FuncionarioId INT,
+@Nome VARCHAR(30),
+@CPF VARCHAR(11),
+@Cargo VARCHAR(30),
+@Email VARCHAR(100),
+@DataNasc DATE,
+@Telefone VARCHAR(10),
+@Celular VARCHAR(11),
+@EnderecoId INT,
+@Setor VARCHAR (30),
+@Senha VARCHAR(10)
+
+AS BEGIN
+BEGIN TRAN
+UPDATE Usuarios.Funcionarios SET Nome = @Nome, CPF = @CPF, Cargo = @Cargo, Email = @Email, DataNasc = @DataNasc, TelefoneFixo = @Telefone,
+Celular = @Celular,EnderecoId = @EnderecoId, Setor = @Setor, Senha = @Senha WHERE EnderecoId = @EnderecoId
+SELECT @@IDENTITY AS 'RetornoAF'
+COMMIT TRAN
+END
+
+--------------------------------------------------------------------------------------------------------
+

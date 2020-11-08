@@ -20,10 +20,11 @@ namespace WindowsFormsApp1
             AtualizarEndereco();
         }
 
+        EnderecoNegocios enderecoNegocios = new EnderecoNegocios();
+
         public void AtualizarEndereco()
         {
             EnderecoColecao enderecoColecao = new EnderecoColecao();
-            EnderecoNegocios enderecoNegocios = new EnderecoNegocios();
 
             enderecoColecao = enderecoNegocios.ConsultarEndrecoCep("");
             DgvEnderecoDoUsuario.DataSource = null;
@@ -33,12 +34,32 @@ namespace WindowsFormsApp1
             DgvEnderecoDoUsuario.Refresh();
         }
 
+        UsuarioFuncionario usuarioFuncionario = new UsuarioFuncionario();
         Endereco enderecoSelecionado = new Endereco();
+        FuncionarioNegocios funcionarioNegocios = new FuncionarioNegocios();
+
        
         private void BtnSelecionarEndereco_Click(object sender, EventArgs e)
         {
             enderecoSelecionado = (DgvEnderecoDoUsuario.SelectedRows[0].DataBoundItem as Endereco);
             TxtIdEndereco.Text = enderecoSelecionado.EnderecoId.ToString();
+        }
+
+        private void BtnSalvar_Click(object sender, EventArgs e)
+        {
+            usuarioFuncionario.Nome = TxtNome.Text;
+            usuarioFuncionario.Cpf = TxtCpf.Text;
+            usuarioFuncionario.Cargo = TxtCargo.Text;
+            usuarioFuncionario.Email = TxtEmail.Text;
+            usuarioFuncionario.DataDeNacimento = DtpDataNascimento.Value;
+            usuarioFuncionario.TelefoneFixo = TxtTelefoneFixo.Text;
+            usuarioFuncionario.TelefoneCelular = TxtCelular.Text;
+            usuarioFuncionario.EnderecoId = int.Parse(TxtIdEndereco.Text);
+            usuarioFuncionario.Setor = TxtSetor.Text;
+            usuarioFuncionario.Senha = TxtSenha.Text;
+
+            funcionarioNegocios.InserirUsuarioFuncionario(usuarioFuncionario);
+            this.Close();
         }
     }
 }
