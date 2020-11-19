@@ -3,12 +3,9 @@ CREATE DATABASE PimDB;
 GO 
 --Para usar a base
 USE PimDB;
-
---------------------------------------------------------------------------------------------------------------------
---Criando o schema endereços
-CREATE SCHEMA Enderecos;
 GO
------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+
 --Criando a tabela endereço
 CREATE TABLE Enderecos.Enderecos(
 EnderecoId INT PRIMARY KEY NOT NULL IDENTITY (1,1),
@@ -21,15 +18,8 @@ Pais VARCHAR (50) NOT NULL,
 Complemento VARCHAR(20),
 Cep VARCHAR (10)
 );
-
 GO
-
 -----------------------------------------------------------------------------------------------------
-
---Criando o Schema para os Usuários
-CREATE SCHEMA Usuarios;
-GO
------------------------------------------
 
 --Criando a tabela funcionários
 CREATE TABLE Usuarios.Funcionarios (
@@ -67,40 +57,32 @@ CONSTRAINT fk_EnderecoId FOREIGN KEY (EnderecoId) REFERENCES Enderecos.Enderecos
 );
 
 GO
--------------------------------------------------------------------------------------------------------------------
-
---Criando o Schema para os Logins
-CREATE SCHEMA Logins;
-
+--------------------------------------------------------------------------------------------------------
+--criando tabela requisições
+CREATE TABLE Requisicoes.RequisicaoCliente(
+RequisicaoId INT NOT NULL PRIMARY KEY IDENTITY (1,1),
+TipoRequisicao VARCHAR (40) NOT NULL,
+Data DATETIME NOT NULL, --Data da criação
+Valor FLOAT NOT NULL,
+QuantidadeDeMoedas FLOAT NOT NULL,
+ClienteId INT NOT NULL,
+CONSTRAINT fk_ClienteReq FOREIGN KEY (ClienteId) REFERENCES Usuarios.Cliente (ClienteId)
+);
 GO
------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+--Criando tabela de smartContract
 
---tabela de logins Cliente para o Web/mobile
-CREATE TABLE Logins.Acesso(
- AcessoId INT PRIMARY KEY NOT NULL,
- Senha VARCHAR (10) NOT NULL,
- CONSTRAINT fk_USULOG FOREIGN KEY (AcessoId) REFERENCES Usuarios.Cliente (ClienteId),
- CONSTRAINT fk_USUSENHA FOREIGN KEY (Senha) REFERENCES Usuarios.Cliente (Senha)
- ON DELETE CASCADE
- ON UPDATE CASCADE
-)
-
+CREATE TABLE SmartContrato.Contrato(
+ContratoId INT NOT NULL PRIMARY KEY IDENTITY (1,1),
+TipoContrato VARCHAR (40),
+DataCriacao DATETIME NOT NULL,
+Valor FLOAT NOT NULL,
+ClienteId INT NOT NULL,
+CONSTRAINT fk_ClienteReq FOREIGN KEY (ClienteId) REFERENCES Usuarios.Cliente (ClienteId)
+);
 GO
--------------------------------------------------
---tabela de logins Funcionário para o Desktop
-CREATE TABLE Logins.AcessoFunc(
- AcessoFuncId INT PRIMARY KEY NOT NULL,
- Senha VARCHAR (10) NOT NULL,
- CONSTRAINT fk_FUNCLOG FOREIGN KEY (AcessoFuncId) REFERENCES Usuarios.Funcionarios (FuncionarioId),
- CONSTRAINT fk_FUNCSENHA FOREIGN KEY (Senha) REFERENCES Usuarios.Funcionarios (Senha)
- ON DELETE CASCADE
- ON UPDATE CASCADE
-)
-
 --------------------------------------------------------------------------------------------------------
 --procedure para inserção de endereço para Desktop
-
-GO
 
 CREATE PROCEDURE uspInserirEndereco
 
@@ -117,12 +99,11 @@ CREATE PROCEDURE uspInserirEndereco
 AS BEGIN
 BEGIN TRAN
 INSERT INTO Enderecos.Enderecos VALUES (@Logradouro,@Numero,@Bairro,@Cidade,@Estado,@Pais,@Complemento,@Cep)
-SELECT @@IDENTITY AS 'RetornoUI'
+SELECT @@IDENTITY AS 'RetornoIE'
 COMMIT TRAN
 END
-
-uspInserirEndereco 'RUA','123','BAIRRO','SÃO PAULO','SP','BRASIL','COMPLEMENTO','CEP'
-
+GO
+-- teste procedure uspInserirEndereco 'RUA','123','BAIRRO','SÃO PAULO','SP','BRASIL','COMPLEMENTO','CEP'
 --------------------------------------------------------------------------------------------------------
 
 CREATE PROCEDURE uspConsultarAcessoUser
@@ -137,16 +118,14 @@ DECLARE @Status int
 	SELECT @Status
 END
 
-uspConsultarAcessoUser @AcessoId = 1, @Senha = '123b'
+-- TESTE ACESSO USER uspConsultarAcessoUser @AcessoId = 1, @Senha = '123b'
 
-INSERT INTO Usuários.Funcionarios (FuncionárioId, Nome, CPF, Cargo, Email, DataNasc, Setor, Senha)
-VALUES (1,'funcionario teste', 333, 'teste','teste@teste.com','2020-10-11','setorTeste','teste')
-
-SELECT * FROM Usuarios.Funcionarios
+-- TESTE INSERT INSERT INTO Usuários.Funcionarios (FuncionárioId, Nome, CPF, Cargo, Email, DataNasc, Setor, Senha)
+--VALUES (1,'funcionario teste', 333, 'teste','teste@teste.com','2020-10-11','setorTeste','teste')
+GO
 --------------------------------------------------------------------------------------------------------
 -- procedure para consulta de endereço por ID para desktop
 
-GO
 CREATE PROCEDURE uspConsultarIdEndereco
 
 @EnderecoId int
@@ -155,10 +134,10 @@ AS BEGIN
 SELECT * FROM Enderecos.Enderecos
 WHERE EnderecoId = @EnderecoId
 END
+GO
 --------------------------------------------------------------------------------------------------------
 --procedure para consulta de endereço por Cep para desktop
 
-GO
 CREATE PROCEDURE uspConsultaCepEndereco
 
 @Cep VARCHAR (10)
@@ -166,9 +145,9 @@ CREATE PROCEDURE uspConsultaCepEndereco
 AS BEGIN
 SELECT * FROM Enderecos.Enderecos WHERE Enderecos.Cep LIKE '%' + @Cep + '%'
 END
+GO
 --------------------------------------------------------------------------------------------------------
 --procedure para excluir endereco para desktop
-GO
 
 CREATE PROCEDURE uspExcluirEndereco
 @EnderecoId int
@@ -200,7 +179,7 @@ END
 GO
 
 --------------------------------------------------------------------------------------------------------
-
+-- PROCEDURE PARA INSERÇÃO DE FUNCIONARIO
 CREATE PROCEDURE uspInserirFuncionario
 
 @Nome VARCHAR(30),
@@ -223,6 +202,7 @@ END
 --uspInserirFuncionario 'jão','CPFffFF','CARGO','','2011-03-12','TELFIXO','TELCEL',1,'ADIMISTRATIVO','123456'
 go 
 --------------------------------------------------------------------------------------------------------
+--PROCEDURE PARA A CONSULTA DE FUNCIONARIO POR NOME
 CREATE PROCEDURE uspConsultarUsuarioFuncionarioPorNome
 
 @Nome VARCHAR (30)
@@ -232,7 +212,7 @@ SELECT * FROM Usuarios.Funcionarios WHERE Nome LIKE '%' + @Nome + '%'
 END
 go
 --------------------------------------------------------------------------------------------------------
-
+--PROCEDURE PARA CONSULTA DE FUNCIONARIO POR ID
 CREATE PROCEDURE uspConsultarUsuarioFuncionarioPorId
 
 @FuncionarioId INT
@@ -241,7 +221,8 @@ AS BEGIN
 SELECT * FROM Usuarios.Funcionarios WHERE FuncionarioId = @FuncionarioId
 END
 GO
-
+--------------------------------------------------------------------------------------------------------
+-- PROCEDURE PARA ALTERAR USUARIO
 CREATE PROCEDURE uspAlterarUsuarioFuncionario
 
 @FuncionarioId INT,
@@ -250,7 +231,7 @@ CREATE PROCEDURE uspAlterarUsuarioFuncionario
 @Cargo VARCHAR(30),
 @Email VARCHAR(100),
 @DataNasc DATE,
-@Telefone VARCHAR(10),
+@TelefoneFixo VARCHAR(10),
 @Celular VARCHAR(11),
 @EnderecoId INT,
 @Setor VARCHAR (30),
@@ -258,11 +239,123 @@ CREATE PROCEDURE uspAlterarUsuarioFuncionario
 
 AS BEGIN
 BEGIN TRAN
-UPDATE Usuarios.Funcionarios SET Nome = @Nome, CPF = @CPF, Cargo = @Cargo, Email = @Email, DataNasc = @DataNasc, TelefoneFixo = @Telefone,
-Celular = @Celular,EnderecoId = @EnderecoId, Setor = @Setor, Senha = @Senha WHERE EnderecoId = @EnderecoId
+UPDATE Usuarios.Funcionarios SET Nome = @Nome,CPF = @CPF, Cargo = @Cargo, Email = @Email, DataNasc = @DataNasc, TelefoneFixo = @TelefoneFixo,
+Celular = @Celular,EnderecoId = @EnderecoId, Setor = @Setor, Senha = @Senha WHERE FuncionarioId = @FuncionarioId
 SELECT @@IDENTITY AS 'RetornoAF'
 COMMIT TRAN
 END
 
---------------------------------------------------------------------------------------------------------
+-- TESTE DE ALTER uspAlterarUsuarioFuncionario 1,'nOME','cpf','cargo','mail','2020-10-10','telf','telc',1,'setor','5555'
 
+GO
+--------------------------------------------------------------------------------------------------------
+--PROCEDURE PARA INSERÇÃO DE CLIENTE
+CREATE PROCEDURE uspInserirUsuarioCliente
+
+@Nome VARCHAR(30),
+@CPF VARCHAR(11),
+@Email VARCHAR(100),
+@DataNasc DATE,
+@Senha VARCHAR(10),
+@TelefoneFixo VARCHAR(10),
+@Celular VARCHAR (11),
+@EnderecoId INT
+
+AS BEGIN
+BEGIN TRAN
+INSERT INTO Usuarios.Cliente VALUES (@Nome,@CPF,@Email,@DataNasc,@Senha,@TelefoneFixo,@Celular,@EnderecoId)
+SELECT @@IDENTITY AS 'RetornoCI'
+COMMIT TRAN
+END
+
+GO
+--------------------------------------------------------------------------------------------------------
+--PROCEDURE PARA ALTERAÇÃO DO CLIENTE
+CREATE PROCEDURE uspAlterarUsuarioCliente 
+
+@ClienteId INT,
+@Nome VARCHAR(30),
+@CPF VARCHAR(11),
+@Email VARCHAR(100),
+@DataNasc DATE,
+@Senha VARCHAR(10),
+@TelefoneFixo VARCHAR(10),
+@Celular VARCHAR(11),
+@EnderecoId INT
+
+AS BEGIN
+UPDATE Usuarios.Cliente SET Nome = @Nome, CPF = @CPF, Email = @Email, DataNasc = @DataNasc, Senha = @Senha,
+TelefoneFixo = @TelefoneFixo, Celular = @Celular, EnderecoId = @EnderecoId
+WHERE ClienteId = @ClienteId
+SELECT @@IDENTITY AS 'RetornoAC'
+END
+use PimDB
+uspAlterarUsuarioCliente 6,'JAO','CPF','EMAIL','2011-03-12','SENHA','TELF','TELC',1
+select * from Usuarios.Cliente
+
+GO
+--------------------------------------------------------------------------------------------------------
+--PROCEDURE PARA CONSULTA DO CLIENTE POR ID
+CREATE PROCEDURE uspConsultarCliendeId
+
+@ClienteId INT
+
+AS BEGIN
+SELECT * FROM Usuarios.Cliente WHERE ClienteId = @ClienteId
+END
+GO
+--------------------------------------------------------------------------------------------------------
+--PROCEDURE PARA CONSULTA DO CLIENTE POR NOME
+CREATE PROCEDURE uspCunsultarClienteNome
+
+@Nome VARCHAR(30)
+
+AS BEGIN
+SELECT * FROM Usuarios.Cliente WHERE NOME LIKE '%' + @Nome + '%'
+END
+GO
+--------------------------------------------------------------------------------------------------------
+--PROCEDURE PARA INSERÇÃO DE REQUISIÇÃO
+CREATE PROCEDURE uspInserirRequisicao
+
+@TipoRequisicao VARCHAR (40),
+@Data DATETIME,
+@Valor FLOAT,
+@QuantidadeDeMoedas FLOAT,
+@ClienteId INT
+
+AS BEGIN
+BEGIN TRAN
+INSERT INTO Requisicoes.RequisicaoCliente VALUES (@TipoRequisicao, @Data, @Valor, @QuantidadeDeMoedas, @ClienteId)
+SELECT @@IDENTITY AS 'RetornoIR'
+COMMIT TRAN
+END
+GO
+--------------------------------------------------------------------------------------------------------
+--PROCEDURE PARA ALTERAÇÃO DE REQUISIÇÃO
+CREATE PROCEDURE uspAlterarRequisicao
+
+@RequisicaoId INT,
+@TipoRequisicao VARCHAR (40),
+@Data DATETIME,
+@Valor FLOAT,
+@QuantidadeDeMoedas FLOAT,
+@ClienteId INT
+
+AS BEGIN
+BEGIN TRAN
+UPDATE Requisicoes.RequisicaoCliente SET TipoRequisicao = @TipoRequisicao, Data = @Data, Valor = @Valor, QuantidadeDeMoedas = @QuantidadeDeMoedas, ClienteId = @ClienteId WHERE RequisicaoId = @RequisicaoId
+SELECT @@IDENTITY AS 'RetornoAR'
+COMMIT TRAN
+END
+
+--------------------------------------------------------------------------------------------------------
+--PROCEDURE PARA CONSULTA DE REQUISIÇÃO POR ID
+CREATE PROCEDURE uspConsultarRequisicaoPorId
+
+@RequisicaoId INT
+
+AS BEGIN
+SELECT * FROM Requisicoes.RequisicaoCliente WHERE RequisicaoId = @RequisicaoId
+END
+GO

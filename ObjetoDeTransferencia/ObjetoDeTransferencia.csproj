@@ -44,7 +44,6 @@
     <Compile Include="Contratos.cs" />
     <Compile Include="Endereco.cs" />
     <Compile Include="EnderecoColecao.cs" />
-    <Compile Include="Pedidos.cs" />
     <Compile Include="Pessoa.cs" />
     <Compile Include="Requisicoes.cs" />
     <Compile Include="Telefone.cs" />

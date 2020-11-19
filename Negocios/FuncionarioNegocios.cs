@@ -123,7 +123,7 @@ namespace Negocios
                 acessoAoBancoDeDadosSqlServer.LimparParamentros();
                 acessoAoBancoDeDadosSqlServer.AdicionarParamentros("FuncionarioId", usuarioFuncionario.FuncionarioId);
                 acessoAoBancoDeDadosSqlServer.AdicionarParamentros("@Nome", usuarioFuncionario.Nome);
-                acessoAoBancoDeDadosSqlServer.AdicionarParamentros("@CPF", usuarioFuncionario.Cpf);
+                //acessoAoBancoDeDadosSqlServer.AdicionarParamentros("@CPF", usuarioFuncionario.Cpf);
                 acessoAoBancoDeDadosSqlServer.AdicionarParamentros("@Cargo", usuarioFuncionario.Cargo);
                 acessoAoBancoDeDadosSqlServer.AdicionarParamentros("@Email", usuarioFuncionario.Email);
                 acessoAoBancoDeDadosSqlServer.AdicionarParamentros("@DataNasc", usuarioFuncionario.DataDeNacimento);

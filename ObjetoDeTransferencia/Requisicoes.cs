@@ -10,15 +10,13 @@ namespace ObjetoDeTransferencia
     {
         public int RequisisaoId { get; set; }
 
-        public string StatusRequisicao { get; set; }
+        public string TipoRequisicao { get; set; }
 
         public DateTime Data { get; set; }
 
         public double Valor { get; set; }
 
-        public double Quantidade { get; set; }
-
-        public DateTime Validade { get; set; }
+        public double QuantidadeDeMoedas { get; set; }
 
         public int ClienteId { get; set; }
     }
