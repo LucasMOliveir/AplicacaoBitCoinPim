@@ -106,6 +106,42 @@
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="RequisicoesAlterarFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequisicoesAlterarFrm.Designer.cs">
+      <DependentUpon>RequisicoesAlterarFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RequisicoesFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequisicoesFrm.Designer.cs">
+      <DependentUpon>RequisicoesFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RequisicoesInserirFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequisicoesInserirFrm.Designer.cs">
+      <DependentUpon>RequisicoesInserirFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SmartContratoAlterar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SmartContratoAlterar.Designer.cs">
+      <DependentUpon>SmartContratoAlterar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SmartContratosFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SmartContratosFrm.Designer.cs">
+      <DependentUpon>SmartContratosFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SmartContratosInserir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SmartContratosInserir.Designer.cs">
+      <DependentUpon>SmartContratosInserir.cs</DependentUpon>
+    </Compile>
     <Compile Include="TelaLoginFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +179,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequisicoesAlterarFrm.resx">
+      <DependentUpon>RequisicoesAlterarFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequisicoesFrm.resx">
+      <DependentUpon>RequisicoesFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequisicoesInserirFrm.resx">
+      <DependentUpon>RequisicoesInserirFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SmartContratoAlterar.resx">
+      <DependentUpon>SmartContratoAlterar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SmartContratosFrm.resx">
+      <DependentUpon>SmartContratosFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SmartContratosInserir.resx">
+      <DependentUpon>SmartContratosInserir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TelaLoginFrm.resx">
       <DependentUpon>TelaLoginFrm.cs</DependentUpon>

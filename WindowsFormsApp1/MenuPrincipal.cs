@@ -47,5 +47,19 @@ namespace WindowsFormsApp1
             cadastroDeEndereco.MdiParent = this;
             cadastroDeEndereco.Show();
         }
+
+        private void BtnGerenciarPedidosERequisicoes_Click(object sender, EventArgs e)
+        {
+            RequisicoesFrm requisicoesFrm = new RequisicoesFrm();
+            requisicoesFrm.MdiParent = this;
+            requisicoesFrm.Show();
+        }
+
+        private void BtnSmartContrados_Click(object sender, EventArgs e)
+        {
+            SmartContratosFrm smartContratosFrm = new SmartContratosFrm();
+            smartContratosFrm.MdiParent = this;
+            smartContratosFrm.Show();
+        }
     }
 }

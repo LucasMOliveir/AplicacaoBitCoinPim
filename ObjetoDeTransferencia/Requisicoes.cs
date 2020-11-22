@@ -8,7 +8,7 @@ namespace ObjetoDeTransferencia
 {
     public class Requisicoes
     {
-        public int RequisisaoId { get; set; }
+        public int RequisicaoId { get; set; }
 
         public string TipoRequisicao { get; set; }
 

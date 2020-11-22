@@ -6,17 +6,13 @@ using System.Threading.Tasks;
 
 namespace ObjetoDeTransferencia
 {
-    public class Contratos
+    public class SmartContrato
     {
         public int ContratoId { get; set; }
 
         public string TipoContrato { get; set; }
 
-        public string StatusContrato { get; set; }
-
-        public DateTime Validade { get; set; }
-
-        public DateTime Data { get; set; }
+        public DateTime DataCriacao { get; set; }
 
         public double Valor { get; set; }
 

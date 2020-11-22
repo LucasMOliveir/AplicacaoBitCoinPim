@@ -46,6 +46,7 @@
     <Compile Include="LogInNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequisicoesNegocios.cs" />
+    <Compile Include="SmartContratoNegocios.cs" />
     <Compile Include="UsuarioClienteNegocios.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -359,3 +359,75 @@ AS BEGIN
 SELECT * FROM Requisicoes.RequisicaoCliente WHERE RequisicaoId = @RequisicaoId
 END
 GO
+uspConsultarRequisicaoPorId 1
+--------------------------------------------------------------------------------------------------------
+--PROCEDURE DE CONSULTA DE REEQUISIÇÃO GERAL
+CREATE PROCEDURE uspConsultarRequisicao
+
+AS BEGIN
+SELECT * FROM Requisicoes.RequisicaoCliente
+END
+GO
+--------------------------------------------------------------------------------------------------------
+--PROCEDURE PARA CONSULTA DE REQUISICAO POR ID
+CREATE PROCEDURE uspConsultarRequisicaoPorId
+
+@RequisicaoId INT
+
+AS BEGIN
+SELECT * FROM Requisicoes.RequisicaoCliente WHERE RequisicaoId = @RequisicaoId
+END
+GO
+--------------------------------------------------------------------------------------------------------
+--PROCEDURE PARA CRIAÇÃO DE SMARTCONTRACT
+
+CREATE PROCEDURE uspInserirSmartContract
+
+@TipoContrato VARCHAR(40),
+@DataCriacao DATETIME,
+@Valor FLOAT,
+@ClienteId INT
+
+AS BEGIN
+BEGIN TRAN
+INSERT INTO SmartContrato.Contrato VALUES (@TipoContrato, @DataCriacao ,@Valor, @ClienteId)
+SELECT @@IDENTITY AS 'RetornoIS'
+COMMIT TRAN
+END
+GO
+--------------------------------------------------------------------------------------------------------
+--PROCEDURE PARA ALTERAÇÃO EM SMARTCONTRACT
+
+CREATE PROCEDURE uspAlterarSmartContract
+
+@ContratoId INT,
+@TipoContrato VARCHAR(40),
+@DataCriacao DATETIME,
+@Valor FLOAT,
+@ClienteId INT
+
+AS BEGIN
+BEGIN TRAN
+UPDATE SmartContrato.Contrato SET TipoContrato = @TipoContrato, DataCriacao = @DataCriacao, Valor = @Valor, ClienteId = @ClienteId WHERE ContratoId = @ContratoId
+SELECT @@IDENTITY AS 'RetornoAS'
+COMMIT TRAN
+END
+GO
+--------------------------------------------------------------------------------------------------------
+--PROCEDURE PARA CONSULTA DE SMARTCONTRACT GERAL
+CREATE PROCEDURE uspConsultaSmartContractPorId
+@ContratoId INT
+
+AS BEGIN
+SELECT * FROM SmartContrato.Contrato WHERE ContratoId = @ContratoId
+END
+GO
+--------------------------------------------------------------------------------------------------------
+--PROCEDURE PARA CONSULTA DE SMARTCONTRACTS
+ALTER PROCEDURE uspConsultaSmartContract
+
+AS BEGIN
+SELECT * FROM SmartContrato.Contrato 
+END
+GO
+--------------------------------------------------------------------------------------------------------

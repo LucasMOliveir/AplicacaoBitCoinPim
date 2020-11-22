@@ -20,8 +20,6 @@ namespace WindowsFormsApp1
             DgvCadastroDeEndereco.AutoGenerateColumns = false;
             Atualizar();
         }
-
-        Endereco endereco = new Endereco();
         Endereco enderecoSelecionado = new Endereco();
         EnderecoColecao enderecoColecao = new EnderecoColecao();
         EnderecoNegocios enderecoNegocios = new EnderecoNegocios();

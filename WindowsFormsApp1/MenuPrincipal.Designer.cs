@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
             this.panel1 = new System.Windows.Forms.Panel();
             this.BtnCadastroEndereço = new System.Windows.Forms.Button();
-            this.BtnInclusaoEAprovacao = new System.Windows.Forms.Button();
+            this.BtnSmartContrados = new System.Windows.Forms.Button();
             this.BtnGerenciarPedidosERequisicoes = new System.Windows.Forms.Button();
             this.BtnCadastroDeUsuarios = new System.Windows.Forms.Button();
             this.BtnCadastroDeFuncionario = new System.Windows.Forms.Button();
@@ -42,7 +42,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.BtnCadastroEndereço);
-            this.panel1.Controls.Add(this.BtnInclusaoEAprovacao);
+            this.panel1.Controls.Add(this.BtnSmartContrados);
             this.panel1.Controls.Add(this.BtnGerenciarPedidosERequisicoes);
             this.panel1.Controls.Add(this.BtnCadastroDeUsuarios);
             this.panel1.Controls.Add(this.BtnCadastroDeFuncionario);
@@ -64,16 +64,17 @@
             this.BtnCadastroEndereço.UseVisualStyleBackColor = false;
             this.BtnCadastroEndereço.Click += new System.EventHandler(this.BtnCadastroEndereço_Click);
             // 
-            // BtnInclusaoEAprovacao
+            // BtnSmartContrados
             // 
-            this.BtnInclusaoEAprovacao.BackColor = System.Drawing.Color.Transparent;
-            this.BtnInclusaoEAprovacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnInclusaoEAprovacao.Location = new System.Drawing.Point(636, 0);
-            this.BtnInclusaoEAprovacao.Name = "BtnInclusaoEAprovacao";
-            this.BtnInclusaoEAprovacao.Size = new System.Drawing.Size(213, 79);
-            this.BtnInclusaoEAprovacao.TabIndex = 0;
-            this.BtnInclusaoEAprovacao.Text = "Inclusão e aprovação de pedidos";
-            this.BtnInclusaoEAprovacao.UseVisualStyleBackColor = false;
+            this.BtnSmartContrados.BackColor = System.Drawing.Color.Transparent;
+            this.BtnSmartContrados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSmartContrados.Location = new System.Drawing.Point(636, 0);
+            this.BtnSmartContrados.Name = "BtnSmartContrados";
+            this.BtnSmartContrados.Size = new System.Drawing.Size(213, 79);
+            this.BtnSmartContrados.TabIndex = 0;
+            this.BtnSmartContrados.Text = "Smart contratos";
+            this.BtnSmartContrados.UseVisualStyleBackColor = false;
+            this.BtnSmartContrados.Click += new System.EventHandler(this.BtnSmartContrados_Click);
             // 
             // BtnGerenciarPedidosERequisicoes
             // 
@@ -83,8 +84,9 @@
             this.BtnGerenciarPedidosERequisicoes.Name = "BtnGerenciarPedidosERequisicoes";
             this.BtnGerenciarPedidosERequisicoes.Size = new System.Drawing.Size(213, 79);
             this.BtnGerenciarPedidosERequisicoes.TabIndex = 0;
-            this.BtnGerenciarPedidosERequisicoes.Text = "Gerenciar pedidos e requisições";
+            this.BtnGerenciarPedidosERequisicoes.Text = "Requisições";
             this.BtnGerenciarPedidosERequisicoes.UseVisualStyleBackColor = false;
+            this.BtnGerenciarPedidosERequisicoes.Click += new System.EventHandler(this.BtnGerenciarPedidosERequisicoes_Click);
             // 
             // BtnCadastroDeUsuarios
             // 
@@ -137,7 +139,7 @@
         private System.Windows.Forms.Button BtnGerenciarPedidosERequisicoes;
         private System.Windows.Forms.Button BtnCadastroDeUsuarios;
         private System.Windows.Forms.Button BtnCadastroDeFuncionario;
-        private System.Windows.Forms.Button BtnInclusaoEAprovacao;
+        private System.Windows.Forms.Button BtnSmartContrados;
         private System.Windows.Forms.Button BtnCadastroEndereço;
     }
 }
