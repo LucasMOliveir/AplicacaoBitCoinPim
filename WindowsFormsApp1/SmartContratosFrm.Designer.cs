@@ -36,12 +36,14 @@
             this.BtnConsultarPorId = new System.Windows.Forms.Button();
             this.DgvContratos = new System.Windows.Forms.DataGridView();
             this.BtnAtulizar = new System.Windows.Forms.Button();
+            this.BtnRelatorio = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvContratos)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.BtnRelatorio);
             this.panel1.Controls.Add(this.BtnAlterarContrato);
             this.panel1.Controls.Add(this.BtnCadastrarContrato);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -118,6 +120,16 @@
             this.BtnAtulizar.UseVisualStyleBackColor = true;
             this.BtnAtulizar.Click += new System.EventHandler(this.BtnAtulizar_Click);
             // 
+            // BtnRelatorio
+            // 
+            this.BtnRelatorio.Location = new System.Drawing.Point(311, 3);
+            this.BtnRelatorio.Name = "BtnRelatorio";
+            this.BtnRelatorio.Size = new System.Drawing.Size(151, 94);
+            this.BtnRelatorio.TabIndex = 1;
+            this.BtnRelatorio.Text = "Relatorio";
+            this.BtnRelatorio.UseVisualStyleBackColor = true;
+            this.BtnRelatorio.Click += new System.EventHandler(this.BtnRelatorio_Click);
+            // 
             // SmartContratosFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,5 +160,6 @@
         private System.Windows.Forms.Button BtnConsultarPorId;
         private System.Windows.Forms.DataGridView DgvContratos;
         private System.Windows.Forms.Button BtnAtulizar;
+        private System.Windows.Forms.Button BtnRelatorio;
     }
 }

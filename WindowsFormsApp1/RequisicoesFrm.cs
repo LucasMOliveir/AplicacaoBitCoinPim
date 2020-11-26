@@ -73,5 +73,12 @@ namespace WindowsFormsApp1
             DgvRequisicoes.Update();
             DgvRequisicoes.Refresh();
         }
+
+        private void BtnRelatorio_Click(object sender, EventArgs e)
+        {
+            RequisicaoRelatorio requisicaoRelatorio = new RequisicaoRelatorio();
+            requisicaoRelatorio.MdiParent = this.MdiParent;
+            requisicaoRelatorio.Show();
+        }
     }
 }

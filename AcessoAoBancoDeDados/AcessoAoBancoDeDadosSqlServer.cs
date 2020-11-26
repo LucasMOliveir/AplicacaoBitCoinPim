@@ -110,6 +110,5 @@ namespace AcessoAoBancoDeDados
                 throw new Exception(ex.Message);
             }
         }
-
     }
 }

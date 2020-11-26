@@ -74,5 +74,12 @@ namespace WindowsFormsApp1
         {
             Atualizar();
         }
+
+        private void BtnRelatorio_Click(object sender, EventArgs e)
+        {
+            SmartContratoRelatorio smartContratoRelatorio = new SmartContratoRelatorio();
+            smartContratoRelatorio.MdiParent = this.MdiParent;
+            smartContratoRelatorio.Show();
+        }
     }
 }

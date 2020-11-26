@@ -37,6 +37,7 @@
             this.BtnPesquisarId = new System.Windows.Forms.Button();
             this.BtnAtualizar = new System.Windows.Forms.Button();
             this.DgvRequisicoes = new System.Windows.Forms.DataGridView();
+            this.BtnRelatorio = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvRequisicoes)).BeginInit();
             this.SuspendLayout();
@@ -44,6 +45,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.BtnRelatorio);
             this.panel1.Controls.Add(this.BtnAlterar);
             this.panel1.Controls.Add(this.BtnInserirRequisicao);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -57,7 +59,7 @@
             this.BtnAlterar.BackColor = System.Drawing.Color.Gainsboro;
             this.BtnAlterar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAlterar.Image = ((System.Drawing.Image)(resources.GetObject("BtnAlterar.Image")));
-            this.BtnAlterar.Location = new System.Drawing.Point(220, 3);
+            this.BtnAlterar.Location = new System.Drawing.Point(216, 3);
             this.BtnAlterar.Name = "BtnAlterar";
             this.BtnAlterar.Size = new System.Drawing.Size(211, 94);
             this.BtnAlterar.TabIndex = 0;
@@ -130,6 +132,19 @@
             this.DgvRequisicoes.Size = new System.Drawing.Size(1008, 342);
             this.DgvRequisicoes.TabIndex = 4;
             // 
+            // BtnRelatorio
+            // 
+            this.BtnRelatorio.BackColor = System.Drawing.Color.Gainsboro;
+            this.BtnRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnRelatorio.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnRelatorio.Location = new System.Drawing.Point(429, 3);
+            this.BtnRelatorio.Name = "BtnRelatorio";
+            this.BtnRelatorio.Size = new System.Drawing.Size(189, 94);
+            this.BtnRelatorio.TabIndex = 1;
+            this.BtnRelatorio.Text = "Relatorio";
+            this.BtnRelatorio.UseVisualStyleBackColor = false;
+            this.BtnRelatorio.Click += new System.EventHandler(this.BtnRelatorio_Click);
+            // 
             // RequisicoesFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,5 +175,6 @@
         private System.Windows.Forms.Button BtnPesquisarId;
         private System.Windows.Forms.Button BtnAtualizar;
         private System.Windows.Forms.DataGridView DgvRequisicoes;
+        private System.Windows.Forms.Button BtnRelatorio;
     }
 }
